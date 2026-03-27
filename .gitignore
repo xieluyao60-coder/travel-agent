@@ -28,3 +28,4 @@ qq_selfcheck_template.xlsx
 
 # optional local assets not required for source release
 image/
+_vendor/
