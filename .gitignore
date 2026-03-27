@@ -1,0 +1,30 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.env
+dist/
+build/
+coverage.xml
+htmlcov/
+
+# local/runtime artifacts
+logs/
+travel_planner_assistant.egg-info/
+
+# test/dev-only
+tests/
+tools/
+TODO.md
+qq_selfcheck_template.xlsx
+
+# personal/private docs
+开发文档-个人配置.md
+
+# optional local assets not required for source release
+image/

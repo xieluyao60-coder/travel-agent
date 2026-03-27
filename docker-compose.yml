@@ -1,0 +1,35 @@
+﻿name: travel-assistant
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: travel-assistant-app
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: travel-assistant-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: travel-assistant-nginx
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
+
+volumes:
+  redis-data:
